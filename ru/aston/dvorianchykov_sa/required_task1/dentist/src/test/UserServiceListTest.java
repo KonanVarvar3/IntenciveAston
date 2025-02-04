@@ -15,24 +15,17 @@ import java.util.List;
 
 public class UserServiceListTest {
 
-    private User nik = new User("Nik", "Dobronravov", 10);
-    private User ivan = new User("Ivan", "Naumov", 19);
-    private User dzhon = new User("Dzhon", "Abaimov", 24);
-    private User alexander = new User("Alexander", "Skvorcov", 48);
+    UserServiceList userServiceList;
 
     @BeforeEach
-    public void setUp() {
-        nik = new User("Nik", "Dobronravov", 10);
-        ivan = new User("Ivan", "Naumov", 19);
-        dzhon = new User("Dzhon", "Abaimov", 24);
-        alexander = new User("Alexander", "Skvorcov", 48);
-    }
+    public void setUp() throws NullUserException, IncorrectUserAgeException {
+        User nik = new User("Nik", "Dobronravov", 10);
+        User ivan = new User("Ivan", "Naumov", 19);
+        User dzhon = new User("Dzhon", "Abaimov", 24);
+        User alexander = new User("Alexander", "Skvorcov", 48);
 
-    @Test
-    public void getTotalPrice() throws NullUserException, IncorrectUserAgeException {
         RentgenService rentgenService1 = new RentgenService(nik);
         RentgenService rentgenService2 = new RentgenService(ivan);
-
         ToothExtractionService toothExtractionService1 = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
         ToothExtractionService toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
 
@@ -41,10 +34,34 @@ public class UserServiceListTest {
         serviceList.add(rentgenService2);
         serviceList.add(toothExtractionService1);
         serviceList.add(toothExtractionService2);
-        UserServiceList userServiceList = new UserServiceList(serviceList);
 
+        userServiceList = new UserServiceList(serviceList);
+    }
+
+    @Test
+    public void getTotalPrice(){
         BigDecimal expected = userServiceList.calculateTotalServicePrice();
         BigDecimal actual = new BigDecimal("3810.00");
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sortServices(){
+        List<Service> serviceList = userServiceList.sortServices();
+
+        String expected1 = serviceList.get(0).getUser().getSurname();
+        String expected2 = serviceList.get(1).getUser().getSurname();
+        String expected3 = serviceList.get(2).getUser().getSurname();
+        String expected4 = serviceList.get(3).getUser().getSurname();
+
+        String actual1 = "Abaimov";
+        String actual2 = "Dobronravov";
+        String actual3 = "Naumov";
+        String actual4 = "Skvorcov";
+
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
+        Assertions.assertEquals(expected3, actual3);
+        Assertions.assertEquals(expected4, actual4);
     }
 }

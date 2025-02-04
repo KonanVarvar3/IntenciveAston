@@ -5,6 +5,7 @@ import Models.User;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.function.BiFunction;
 
 public class ToothExtractionService extends Service {
 
@@ -37,13 +38,13 @@ public class ToothExtractionService extends Service {
         super(user);
         this.procedure = procedure;
         this.isStudent = isStudent;
-        calculateTotal();
+        this.total = calculateTotal();
     }
 
     public void setUser(User user) throws NullUserException {
         if (user == null) throw new NullUserException();
         this.user = user;
-        calculateTotal();
+        this.total = calculateTotal();
     }
 
     public String getProcedureName() {
@@ -52,12 +53,12 @@ public class ToothExtractionService extends Service {
 
     public void setStudent(boolean isStudent) {
         this.isStudent = isStudent;
-        calculateTotal();
+        this.total = calculateTotal();
     }
 
     public void setProcedure(Procedures procedure) {
         this.procedure = procedure;
-        calculateTotal();
+        this.total = calculateTotal();
     }
 
     @Override
@@ -66,8 +67,8 @@ public class ToothExtractionService extends Service {
         return procedure.getPrice().multiply(percent).setScale(2, RoundingMode.HALF_UP);
     }
 
-    private void calculateTotal() {
-        total = procedure.getPrice().subtract(getDiscount()).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal calculateTotal() {
+        return procedure.getPrice().subtract(getDiscount()).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override

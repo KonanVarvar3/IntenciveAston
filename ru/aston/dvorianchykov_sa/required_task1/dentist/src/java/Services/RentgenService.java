@@ -15,7 +15,7 @@ public class RentgenService extends Service {
     public RentgenService(User user) throws NullUserException, IncorrectUserAgeException {
         super(user);
         setChild();
-        setTotal();
+        this.total = calculateTotal();
     }
 
     public boolean getChild() {
@@ -26,7 +26,7 @@ public class RentgenService extends Service {
         if (user == null) throw new NullUserException();
         this.user = user;
         setChild();
-        setTotal();
+        this.total = calculateTotal();
     }
 
     @Override
@@ -36,8 +36,8 @@ public class RentgenService extends Service {
                 : new BigDecimal(0).setScale(2, RoundingMode.HALF_UP);
     }
 
-    private void setTotal() {
-        total = RENTGEN_PRICE.subtract(getDiscount()).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal calculateTotal() {
+        return RENTGEN_PRICE.subtract(getDiscount()).setScale(2, RoundingMode.HALF_UP);
     }
 
     private void setChild() throws IncorrectUserAgeException {

@@ -10,28 +10,43 @@ import java.math.BigDecimal;
 
 public class RentgenServiceTest {
 
-    private User nik = new User("Nik", "Dobronravov", 10);
-    private User ivan = new User("Ivan", "Naumov", 19);
+    RentgenService rentgenService;
+    RentgenService rentgenService2;
 
     @BeforeEach
-    public void setUp() {
-        nik = new User("Nik", "Dobronravov", 10);
-        ivan = new User("Ivan", "Naumov", 19);
+    public void setUp() throws NullUserException, IncorrectUserAgeException {
+        User nik = new User("Nik", "Dobronravov", 10);
+        User ivan = new User("Ivan", "Naumov", 19);
+
+        rentgenService = new RentgenService(nik);
+        rentgenService2 = new RentgenService(ivan);
     }
 
     @Test
-    public void getDiscountWhenUserIsChild() throws NullUserException, IncorrectUserAgeException {
-        RentgenService rentgenService = new RentgenService(nik);
+    public void getDiscountWhenUserIsChild() {
         BigDecimal expected = rentgenService.getDiscount();
         BigDecimal actual = new BigDecimal("240.00");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void getDiscountWhenUserIsNotChild() throws NullUserException, IncorrectUserAgeException {
-        RentgenService rentgenService = new RentgenService(ivan);
-        BigDecimal expected = rentgenService.getDiscount();
+    public void getTotalWhenUserIsChild() {
+        BigDecimal expected = rentgenService.calculateTotal();
+        BigDecimal actual = new BigDecimal("360.00");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDiscountWhenUserIsNotChild() {
+        BigDecimal expected = rentgenService2.getDiscount();
         BigDecimal actual = new BigDecimal("0.00");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getTotalWhenUserIsNotChild() {
+        BigDecimal expected = rentgenService2.calculateTotal();
+        BigDecimal actual = new BigDecimal("600.00");
         Assertions.assertEquals(expected, actual);
     }
 }

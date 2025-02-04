@@ -4,31 +4,47 @@ import Services.ToothExtractionService;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 class ToothExtractionServiceTest {
 
-    private User dzhon = new User("Dzhon", "Abaimov", 24);
+    private ToothExtractionService toothExtractionService;
+    private ToothExtractionService toothExtractionService2;
 
     @BeforeEach
-    public void setUp() {
-        dzhon = new User("Dzhon", "Abaimov", 24);
+    public void setUp() throws NullUserException {
+        User dzhon = new User("Dzhon", "Abaimov", 24);
+        User alexander = new User("Alexander", "Skvorcov", 48);
+
+        toothExtractionService = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
+        toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
     }
 
     @Test
-    public void getDiscountWhenStudentIsTrue() throws NullUserException {
-        ToothExtractionService toothExtractionService = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
+    public void getDiscountWhenStudentIsTrue() {
         BigDecimal expected = toothExtractionService.getDiscount();
-        BigDecimal actual = new BigDecimal(150).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal actual = new BigDecimal("150.00");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void getDiscountWhenStudentIsFalse() throws NullUserException {
-        ToothExtractionService toothExtractionService = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
-        BigDecimal expected2 = toothExtractionService.getDiscount();
-        BigDecimal actual2 = new BigDecimal(0).setScale(2, RoundingMode.HALF_UP);
-        Assertions.assertEquals(expected2, actual2);
+    public void getTotalWhenStudentIsTrue() {
+        BigDecimal expected = toothExtractionService.calculateTotal();
+        BigDecimal actual = new BigDecimal("1350.00");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDiscountWhenStudentIsFalse() {
+        BigDecimal expected = toothExtractionService2.getDiscount();
+        BigDecimal actual = new BigDecimal("0.00");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getTotalWhenStudentIsFalse() {
+        BigDecimal expected = toothExtractionService2.calculateTotal();
+        BigDecimal actual = new BigDecimal("1500.00");
+        Assertions.assertEquals(expected, actual);
     }
 
 }
