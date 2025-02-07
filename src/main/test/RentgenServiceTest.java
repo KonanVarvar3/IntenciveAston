@@ -1,7 +1,7 @@
-import Exceptions.IncorrectUserAgeException;
-import Exceptions.NullUserException;
-import Models.User;
-import Services.RentgenService;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
+import ru.aston.dvorianchykov_sa.task1.Services.RentgenService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

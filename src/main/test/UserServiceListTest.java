@@ -1,10 +1,10 @@
-import Exceptions.IncorrectUserAgeException;
-import Exceptions.NullUserException;
-import Models.User;
-import Services.RentgenService;
-import Services.Service;
-import Services.ToothExtractionService;
-import Services.UserServiceList;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
+import ru.aston.dvorianchykov_sa.task1.Services.RentgenService;
+import ru.aston.dvorianchykov_sa.task1.Services.Service;
+import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
+import ru.aston.dvorianchykov_sa.task1.Services.UserServiceList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,5 +63,7 @@ public class UserServiceListTest {
         Assertions.assertEquals(expected2, actual2);
         Assertions.assertEquals(expected3, actual3);
         Assertions.assertEquals(expected4, actual4);
+
+        userServiceList.print();
     }
 }

@@ -1,10 +1,10 @@
-import Exceptions.IncorrectUserAgeException;
-import Exceptions.NullUserException;
-import Models.User;
-import Services.RentgenService;
-import Services.Service;
-import Services.ToothExtractionService;
-import Services.UserServiceList;
+package ru.aston.dvorianchykov_sa.task1;
+
+import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
+import ru.aston.dvorianchykov_sa.task1.Services.RentgenService;
+import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +25,20 @@ public class Main {
         ToothExtractionService toothExtractionService1 = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
         ToothExtractionService toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
 
-        List<Service> serviceList = new ArrayList<>();
+        List<ru.aston.dvorianchykov_sa.task1.Services.Service> serviceList = new ArrayList<>();
         serviceList.add(rentgenService1);
         serviceList.add(rentgenService2);
         serviceList.add(toothExtractionService1);
         serviceList.add(toothExtractionService2);
 
-        UserServiceList userServiceList = new UserServiceList(serviceList);
+        ru.aston.dvorianchykov_sa.task1.Services.UserServiceList userServiceList = new ru.aston.dvorianchykov_sa.task1.Services.UserServiceList(serviceList);
 
-        //System.out.println(userServiceList);
+        userServiceList.print();
 
         userServiceList.sortServices();
 
-        System.out.println(userServiceList);
+        userServiceList.print();
+
     }
 
 }

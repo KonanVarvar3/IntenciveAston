@@ -1,6 +1,6 @@
-package Services;
+package ru.aston.dvorianchykov_sa.task1.Services;
 
-import Interfaces.ServiceCalculation;
+import ru.aston.dvorianchykov_sa.task1.Interfaces.ServiceCalculation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,11 +18,9 @@ public class UserServiceList implements ServiceCalculation {
     @Override
     public BigDecimal calculateTotalServicePrice() {
         if (serviceList == null || serviceList.isEmpty()) return new BigDecimal(0).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal sum = new BigDecimal(0);
-        for (Service service : serviceList) {
-            sum = sum.add(service.getTotal());
-        }
-        return sum.setScale(2, RoundingMode.HALF_UP);
+        final BigDecimal[] sum = {new BigDecimal(0)};
+        serviceList.forEach(service -> sum[0] = sum[0].add(service.getTotal()));
+        return sum[0].setScale(2, RoundingMode.HALF_UP);
     }
 
     public List<Service> sortServices() {
@@ -30,13 +28,15 @@ public class UserServiceList implements ServiceCalculation {
         return serviceList;
     }
 
+    public void print() {
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         if (serviceList == null || serviceList.isEmpty()) return "";
         StringBuilder stringBuilder = new StringBuilder("Total price: ").append(calculateTotalServicePrice().toString());
-        for (Service service : serviceList) {
-            stringBuilder.append("\n").append(service);
-        }
+        serviceList.forEach(service -> stringBuilder.append("\n").append(service));
         return stringBuilder.toString();
     }
 }
