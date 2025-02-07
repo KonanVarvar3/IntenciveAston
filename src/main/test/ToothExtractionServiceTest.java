@@ -1,6 +1,4 @@
-import Exceptions.NullUserException;
-import Models.User;
-import Services.ToothExtractionService;
+import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
@@ -11,9 +9,9 @@ class ToothExtractionServiceTest {
     private ToothExtractionService toothExtractionService2;
 
     @BeforeEach
-    public void setUp() throws NullUserException {
-        User dzhon = new User("Dzhon", "Abaimov", 24);
-        User alexander = new User("Alexander", "Skvorcov", 48);
+    public void setUp() throws ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException {
+        ru.aston.dvorianchykov_sa.task1.Models.User dzhon = new ru.aston.dvorianchykov_sa.task1.Models.User("Dzhon", "Abaimov", 24);
+        ru.aston.dvorianchykov_sa.task1.Models.User alexander = new ru.aston.dvorianchykov_sa.task1.Models.User("Alexander", "Skvorcov", 48);
 
         toothExtractionService = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
         toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);

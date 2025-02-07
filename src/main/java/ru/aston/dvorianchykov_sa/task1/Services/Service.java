@@ -1,8 +1,8 @@
-package Services;
+package ru.aston.dvorianchykov_sa.task1.Services;
 
-import Exceptions.NullUserException;
-import Interfaces.Discount;
-import Models.User;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.Interfaces.Discount;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package Models;
+package ru.aston.dvorianchykov_sa.task1.Models;
 
 import java.util.Objects;
 

@@ -1,11 +1,10 @@
-package Services;
+package ru.aston.dvorianchykov_sa.task1.Services;
 
-import Exceptions.NullUserException;
-import Models.User;
+import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.function.BiFunction;
 
 public class ToothExtractionService extends Service {
 
@@ -73,6 +72,6 @@ public class ToothExtractionService extends Service {
 
     @Override
     public String toString() {
-        return String.format("%s %s, age: %d - %s, cost: %s, discount: %s", user.getSurname(), user.getName(), user.getAge(), procedure.getName(), total, getDiscount());
+        return String.format("ID: %d, %s %s, age: %d - %s, cost: %s, discount: %s", super.getId(), user.getSurname(), user.getName(), user.getAge(), procedure.getName(), total, getDiscount());
     }
 }
