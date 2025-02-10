@@ -8,6 +8,7 @@ import ru.aston.dvorianchykov_sa.task1.Services.UserServiceList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.aston.dvorianchykov_sa.task1.constants.Procedures;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class UserServiceListTest {
 
         RentgenService rentgenService1 = new RentgenService(nik);
         RentgenService rentgenService2 = new RentgenService(ivan);
-        ToothExtractionService toothExtractionService1 = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
-        ToothExtractionService toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
+        ToothExtractionService toothExtractionService1 = new ToothExtractionService(dzhon, Procedures.MORAL_TOOTH_EXTRACTION, true);
+        ToothExtractionService toothExtractionService2 = new ToothExtractionService(alexander, Procedures.MORAL_TOOTH_EXTRACTION, false);
 
         List<Service> serviceList = new ArrayList<>();
         serviceList.add(rentgenService1);

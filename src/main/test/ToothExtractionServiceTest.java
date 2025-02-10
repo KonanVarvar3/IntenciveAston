@@ -1,5 +1,6 @@
 import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
 import org.junit.jupiter.api.*;
+import ru.aston.dvorianchykov_sa.task1.constants.Procedures;
 
 import java.math.BigDecimal;
 
@@ -13,8 +14,8 @@ class ToothExtractionServiceTest {
         ru.aston.dvorianchykov_sa.task1.Models.User dzhon = new ru.aston.dvorianchykov_sa.task1.Models.User("Dzhon", "Abaimov", 24);
         ru.aston.dvorianchykov_sa.task1.Models.User alexander = new ru.aston.dvorianchykov_sa.task1.Models.User("Alexander", "Skvorcov", 48);
 
-        toothExtractionService = new ToothExtractionService(dzhon, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, true);
-        toothExtractionService2 = new ToothExtractionService(alexander, ToothExtractionService.Procedures.MORAL_TOOTH_EXTRACTION, false);
+        toothExtractionService = new ToothExtractionService(dzhon, Procedures.MORAL_TOOTH_EXTRACTION, true);
+        toothExtractionService2 = new ToothExtractionService(alexander, Procedures.MORAL_TOOTH_EXTRACTION, false);
     }
 
     @Test

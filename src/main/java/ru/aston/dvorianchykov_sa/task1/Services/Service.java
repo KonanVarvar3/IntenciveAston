@@ -6,7 +6,7 @@ import ru.aston.dvorianchykov_sa.task1.Models.User;
 
 import java.math.BigDecimal;
 
-public abstract class Service implements Discount, Comparable<Service> {
+public abstract class Service implements Discount {
 
     private static int incrementId = 1;
     private final int id;
@@ -35,10 +35,4 @@ public abstract class Service implements Discount, Comparable<Service> {
     public BigDecimal getTotal() {
         return total;
     }
-
-    @Override
-    public int compareTo(Service service) {
-        return this.getUser().getSurname().compareTo(service.getUser().getSurname());
-    }
-
 }

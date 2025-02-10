@@ -2,7 +2,7 @@ package ru.aston.dvorianchykov_sa.task1.Models;
 
 import java.util.Objects;
 
-public class User {
+public class User implements Comparable<User>{
 
     private String name;
     private String surname;
@@ -56,6 +56,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(age, name, surname);
+    }
+
+    @Override
+    public int compareTo(User user) {
+        if (user == null) return 1;
+        if (surname == null) return -1;
+        return surname.compareTo(user.surname);
     }
 
 //    @Override

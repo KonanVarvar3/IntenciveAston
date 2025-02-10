@@ -10,43 +10,40 @@ import java.math.RoundingMode;
 public class RentgenService extends Service {
 
     private static final BigDecimal RENTGEN_PRICE = new BigDecimal(600).setScale(2, RoundingMode.HALF_UP);
-    private boolean isChild;
 
     public RentgenService(User user) throws NullUserException, IncorrectUserAgeException {
         super(user);
-        setChild();
         this.total = calculateTotal();
-    }
-
-    public boolean getChild() {
-        return isChild;
     }
 
     public void setUser(User user) throws IncorrectUserAgeException, NullUserException {
         if (user == null) throw new NullUserException();
         this.user = user;
-        setChild();
         this.total = calculateTotal();
     }
 
     @Override
-    public BigDecimal getDiscount() {
-        return isChild
+    public BigDecimal getDiscount() throws IncorrectUserAgeException {
+        return isChild()
                 ? RENTGEN_PRICE.multiply(BigDecimal.valueOf(0.4)).setScale(2, RoundingMode.HALF_UP)
                 : new BigDecimal(0).setScale(2, RoundingMode.HALF_UP);
     }
 
-    public BigDecimal calculateTotal() {
+    public BigDecimal calculateTotal() throws IncorrectUserAgeException {
         return RENTGEN_PRICE.subtract(getDiscount()).setScale(2, RoundingMode.HALF_UP);
     }
 
-    private void setChild() throws IncorrectUserAgeException {
+    private boolean isChild() throws IncorrectUserAgeException {
         if (getUser().getAge() < 0) throw new IncorrectUserAgeException(getUser().getAge());
-        if (getUser().getAge() < 18) isChild = true;
+        return getUser().getAge() < 18;
     }
 
     @Override
     public String toString() {
-        return String.format("ID: %d, %s %s, age: %d - Rentgen, cost: %s, discount: %s", super.getId(), user.getSurname(), user.getName(), user.getAge(), total, getDiscount());
+        try {
+            return String.format("ID: %d, %s %s, age: %d - Rentgen, cost: %s, discount: %s", super.getId(), user.getSurname(), user.getName(), user.getAge(), total, getDiscount());
+        } catch (IncorrectUserAgeException e) {
+            return new IncorrectUserAgeException(user.getAge()).getMessage();
+        }
     }
 }

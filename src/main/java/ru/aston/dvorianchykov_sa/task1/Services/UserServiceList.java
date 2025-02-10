@@ -1,6 +1,7 @@
 package ru.aston.dvorianchykov_sa.task1.Services;
 
 import ru.aston.dvorianchykov_sa.task1.Interfaces.ServiceCalculation;
+import ru.aston.dvorianchykov_sa.task1.Models.User;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -24,7 +25,7 @@ public class UserServiceList implements ServiceCalculation {
     }
 
     public List<Service> sortServices() {
-        Collections.sort(serviceList);
+        serviceList.sort(new UserServiceComparator());
         return serviceList;
     }
 

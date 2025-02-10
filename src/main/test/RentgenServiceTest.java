@@ -23,28 +23,28 @@ public class RentgenServiceTest {
     }
 
     @Test
-    public void getDiscountWhenUserIsChild() {
+    public void getDiscountWhenUserIsChild() throws IncorrectUserAgeException {
         BigDecimal expected = rentgenService.getDiscount();
         BigDecimal actual = new BigDecimal("240.00");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void getTotalWhenUserIsChild() {
+    public void getTotalWhenUserIsChild() throws IncorrectUserAgeException {
         BigDecimal expected = rentgenService.calculateTotal();
         BigDecimal actual = new BigDecimal("360.00");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void getDiscountWhenUserIsNotChild() {
+    public void getDiscountWhenUserIsNotChild() throws IncorrectUserAgeException {
         BigDecimal expected = rentgenService2.getDiscount();
         BigDecimal actual = new BigDecimal("0.00");
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void getTotalWhenUserIsNotChild() {
+    public void getTotalWhenUserIsNotChild() throws IncorrectUserAgeException {
         BigDecimal expected = rentgenService2.calculateTotal();
         BigDecimal actual = new BigDecimal("600.00");
         Assertions.assertEquals(expected, actual);
