@@ -1,4 +1,4 @@
-package ru.aston.dvorianchykov_sa.task1.Exceptions;
+package ru.aston.dvorianchykov_sa.task1.exceptions;
 
 public class NullUserException extends Exception {
 
