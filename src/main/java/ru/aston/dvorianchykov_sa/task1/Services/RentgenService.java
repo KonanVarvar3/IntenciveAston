@@ -1,7 +1,7 @@
 package ru.aston.dvorianchykov_sa.task1.Services;
 
-import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
-import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.exceptions.NullUserException;
 import ru.aston.dvorianchykov_sa.task1.Models.User;
 
 import java.math.BigDecimal;
