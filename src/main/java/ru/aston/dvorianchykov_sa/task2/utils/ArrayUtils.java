@@ -25,7 +25,7 @@ public class ArrayUtils {
         }
     }
 
-    public static int findFirstUniq(int[] array) throws NullArrayException, EmptyArrayException {
+    public static Integer findFirstUniq(int[] array) throws NullArrayException, EmptyArrayException {
         if (array == null) throw new NullArrayException(Messages.NULL_ARRAY.getMessage());
         if (array.length == 0) throw new EmptyArrayException(Messages.EMPTY_ARRAY.getMessage());
 
@@ -33,7 +33,8 @@ public class ArrayUtils {
 
         boolean isElem = false;
         for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length; j++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i == j) continue;
                 if (array[i] == array[j]) {
                     isElem = true;
                     break;
@@ -43,7 +44,7 @@ public class ArrayUtils {
             isElem = false;
         }
 
-        return -1;
+        return null;
     }
 
     public static int[] mergeSort(int[] array) throws NullArrayException, EmptyArrayException {

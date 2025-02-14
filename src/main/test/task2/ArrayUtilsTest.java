@@ -20,6 +20,7 @@ public class ArrayUtilsTest {
     private int[] arr6;
     private int[] arr7;
     private int[] arr8;
+    private int[] arr9;
 
     @BeforeEach
     public void setUp() {
@@ -31,6 +32,7 @@ public class ArrayUtilsTest {
         arr6 = new int[4];
         arr7 = new int[]{1, 2, 3, 1, 2, 4};
         arr8 = new int[]{7, 5, 1, 2, 9};
+        arr9 = new int[]{1,1};
     }
 
     @Test
@@ -61,6 +63,7 @@ public class ArrayUtilsTest {
         Assertions.assertEquals(7, ArrayUtils.findFirstUniq(arr2));
         Assertions.assertThrows(NullArrayException.class, () -> ArrayUtils.findFirstUniq(arr5));
         Assertions.assertEquals(3, ArrayUtils.findFirstUniq(arr7));
+        Assertions.assertEquals(null, ArrayUtils.findFirstUniq(arr9));
     }
 
     @Test
