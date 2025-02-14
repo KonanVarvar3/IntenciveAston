@@ -1,5 +1,7 @@
-import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
-import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+package task1;
+
+import ru.aston.dvorianchykov_sa.task1.exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.exceptions.NullUserException;
 import ru.aston.dvorianchykov_sa.task1.Models.User;
 import ru.aston.dvorianchykov_sa.task1.Services.RentgenService;
 import ru.aston.dvorianchykov_sa.task1.Services.Service;

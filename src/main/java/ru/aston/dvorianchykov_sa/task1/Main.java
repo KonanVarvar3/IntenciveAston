@@ -1,7 +1,7 @@
 package ru.aston.dvorianchykov_sa.task1;
 
-import ru.aston.dvorianchykov_sa.task1.Exceptions.IncorrectUserAgeException;
-import ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException;
+import ru.aston.dvorianchykov_sa.task1.exceptions.IncorrectUserAgeException;
+import ru.aston.dvorianchykov_sa.task1.exceptions.NullUserException;
 import ru.aston.dvorianchykov_sa.task1.Models.User;
 import ru.aston.dvorianchykov_sa.task1.Services.RentgenService;
 import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
@@ -39,6 +39,7 @@ public class Main {
         userServiceList.sortServices();
 
         userServiceList.print();
+
     }
 
 }

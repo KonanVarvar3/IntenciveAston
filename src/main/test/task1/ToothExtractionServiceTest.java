@@ -1,3 +1,5 @@
+package task1;
+
 import ru.aston.dvorianchykov_sa.task1.Services.ToothExtractionService;
 import org.junit.jupiter.api.*;
 import ru.aston.dvorianchykov_sa.task1.constants.Procedures;
@@ -10,7 +12,7 @@ class ToothExtractionServiceTest {
     private ToothExtractionService toothExtractionService2;
 
     @BeforeEach
-    public void setUp() throws ru.aston.dvorianchykov_sa.task1.Exceptions.NullUserException {
+    public void setUp() throws ru.aston.dvorianchykov_sa.task1.exceptions.NullUserException {
         ru.aston.dvorianchykov_sa.task1.Models.User dzhon = new ru.aston.dvorianchykov_sa.task1.Models.User("Dzhon", "Abaimov", 24);
         ru.aston.dvorianchykov_sa.task1.Models.User alexander = new ru.aston.dvorianchykov_sa.task1.Models.User("Alexander", "Skvorcov", 48);
 
